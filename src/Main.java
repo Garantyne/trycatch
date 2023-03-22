@@ -12,6 +12,8 @@ public class Main {
         String confirmPassword = scanner.nextLine();
         if(m.checkLoginAndPassword(name, password, confirmPassword)){
             System.out.println("Данные успешно введены");
+        }else{
+            System.out.println("Ошибка добавления данных");
         }
     }
     public boolean checkLoginAndPassword(String login,
@@ -32,10 +34,10 @@ public class Main {
             }
             return true;
         } catch (WrongPasswordException e) {
-            throw e;
+            return false;
 
         }catch (WrongLoginException ex){
-            throw ex;
+            return false;
         }finally {
             System.out.println("Обработка параметров завершена");
         }
